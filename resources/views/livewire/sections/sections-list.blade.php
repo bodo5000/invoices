@@ -4,8 +4,13 @@
     </x-slot>
 
     <x-alert name="success" />
+    <x-alert name="primary" />
+    <x-alert name="warning" />
+    <x-alert name="danger" />
 
     <livewire:sections.create-section />
+    <livewire:sections.edit-section />
+    @include('components.delete-modal', ['itemName' => 'section'])
 
     <div class="row">
         <div class="col-12">
@@ -54,17 +59,25 @@
                                     <td>{{ date_format($section->created_at, 'd/m/Y') }}</td>
                                     <td>{{ date_format($section->updated_at, 'd/m/Y H:i:s') }}</td>
                                     <td>
-                                        <button wire:click="edti({{ $category->id }})" title="edit" type="button" class="btn btn-primary btn-sm">
+                                        <button wire:click="edit({{ $section->id }})" title="edit" type="button"
+                                            data-toggle="modal" data-target="#edit-section"
+                                            class="btn btn-primary btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </button>
 
-                                        <button title="delete" type="button" class="btn btn-danger btn-sm">
+                                        <button wire:click="targetSectionId({{ $section->id }})" title="delete"
+                                            type="button" data-toggle="modal" data-target="#deleteModal"
+                                            class="btn btn-danger btn-sm">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
                                 </tr>
                             @empty
-                                <tr>there is no section yet</tr>
+                                <tr>
+                                    <td colspan="7" class="text-center">
+                                        there is no section yet
+                                    </td>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>
