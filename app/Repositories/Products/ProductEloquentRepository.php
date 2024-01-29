@@ -8,9 +8,16 @@ class ProductEloquentRepository extends BaseEloquentRepository implements Produc
 {
     public function createProduct(array $data)
     {
-        $data['created_by'] = auth()->user()->name;
+        $data['created_by'] = auth()->user()->email;
 
         $this->create($data);
+    }
+
+    public function updateProduct($model, array $data)
+    {
+        $data['updated_by'] = auth()->user()->email;
+
+        $this->update($model, $data);
     }
 
     public function getProductByName($productName, $sectionId)

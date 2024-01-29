@@ -25,7 +25,7 @@ class EditSection extends Component
 
     public function update(SectionRepository $sectionRepository)
     {
-        $sectionRepository->update($this->section, $this->validate());
+        $sectionRepository->updateSection($this->section, $this->validate());
 
         return redirect(route('section-list'))->with('primary', 'section has been updated');
     }

@@ -44,6 +44,7 @@
                                 <th>product_name</th>
                                 <th>section_name</th>
                                 <th>created_by</th>
+                                <th>updated_by</th>
                                 <th>Notes</th>
                                 <th>created_at</th>
                                 <th>updated_at</th>
@@ -57,6 +58,7 @@
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->section->name }}</td>
                                     <td>{{ $product->created_by }}</td>
+                                    <td>{{ $product->updated_by ?? 'no one update it' }}</td>
                                     <td>{{ $product->description ?? 'no description' }}</td>
                                     <td>{{ $product->created_at }}</td>
                                     <td>{{ $product->updated_at }}</td>
@@ -76,7 +78,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7"></td>
+                                    <td class="text-center" colspan="9">there is no product yet</td>
                                 </tr>
                             @endforelse
                         </tbody>

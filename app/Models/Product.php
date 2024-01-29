@@ -14,6 +14,7 @@ class Product extends Model
         'description',
         'created_by',
         'section_id',
+        'updated_by',
     ];
 
     public function section()

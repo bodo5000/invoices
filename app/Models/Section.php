@@ -12,7 +12,8 @@ class Section extends Model
     protected $fillable = [
         'name',
         'description',
-        'created_by'
+        'created_by',
+        'updated_by',
     ];
 
     public function products()

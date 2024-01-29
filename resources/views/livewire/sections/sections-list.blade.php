@@ -43,6 +43,7 @@
                                 <th>#</th>
                                 <th>section_name</th>
                                 <th>created_by</th>
+                                <th>updated_by</th>
                                 <th>Notes</th>
                                 <th>created_at</th>
                                 <th>updated_at</th>
@@ -55,6 +56,7 @@
                                     <td>{{ ++$index }}</td>
                                     <td>{{ $section->name }}</td>
                                     <td>{{ $section->created_by }}</td>
+                                    <td>{{ $section->updated_by ?? 'no one update it' }}</td>
                                     <td>{{ $section->description ?? 'no description' }}</td>
                                     <td>{{ date_format($section->created_at, 'd/m/Y') }}</td>
                                     <td>{{ date_format($section->updated_at, 'd/m/Y H:i:s') }}</td>

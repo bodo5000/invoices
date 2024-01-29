@@ -7,4 +7,5 @@ use App\Repositories\BaseRepository;
 interface SectionRepository extends BaseRepository
 {
     public function createSection(array $data);
+    public function updateSection($model, array $data);
 }

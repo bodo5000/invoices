@@ -28,10 +28,9 @@ class EditProduct extends Component
             return redirect(route('product-list'))->with('warning', 'product name for this section already exists');
         }
 
-        $productRepository->update($this->product, $this->validate());
+        $productRepository->updateProduct($this->product, $this->validate());
         return redirect(route('product-list'))->with('primary', 'product has been updated');
     }
-
 
     public function render()
     {

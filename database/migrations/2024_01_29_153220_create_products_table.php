@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 60);
             $table->text('description')->nullable();
             $table->string('created_by');
+            $table->string('updated_by', 60)->nullable();
             $table->foreignId('section_id')
                 ->constrained('sections')
                 ->onUpdate('cascade')
