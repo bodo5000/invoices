@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Sections;
 
-use App\Models\Section;
 use App\Repositories\Sections\SectionRepository;
 use Livewire\Component;
 

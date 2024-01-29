@@ -1,6 +1,6 @@
 <div>
     <x-slot name="conentHeader">
-        <x-conent-header title="sections" main="Settings" />
+        <x-conent-header title="products" main="Settings" />
     </x-slot>
 
     <x-alert name="success" />
@@ -8,17 +8,17 @@
     <x-alert name="warning" />
     <x-alert name="danger" />
 
-    <livewire:sections.create-section />
-    <livewire:sections.edit-section />
-    @include('components.delete-modal', ['itemName' => 'section'])
+    <livewire:products.create-product />
+    <livewire:products.edit-product />
+    @include('components.delete-modal', ['itemName' => 'product'])
 
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#section-create">
-                        Add Section
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#product-create">
+                        Add Product
                     </button>
 
 
@@ -41,6 +41,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>product_name</th>
                                 <th>section_name</th>
                                 <th>created_by</th>
                                 <th>Notes</th>
@@ -50,22 +51,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($this->allSections as $index => $section)
-                                <tr wire:key{{ $section->id }}>
+                            @forelse ($this->products as $index => $product)
+                                <tr wire:key="{{ $product->id }}">
                                     <td>{{ ++$index }}</td>
-                                    <td>{{ $section->name }}</td>
-                                    <td>{{ $section->created_by }}</td>
-                                    <td>{{ $section->description ?? 'no description' }}</td>
-                                    <td>{{ date_format($section->created_at, 'd/m/Y') }}</td>
-                                    <td>{{ date_format($section->updated_at, 'd/m/Y H:i:s') }}</td>
+                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $product->section->name }}</td>
+                                    <td>{{ $product->created_by }}</td>
+                                    <td>{{ $product->description ?? 'no description' }}</td>
+                                    <td>{{ $product->created_at }}</td>
+                                    <td>{{ $product->updated_at }}</td>
                                     <td>
-                                        <button wire:click="edit({{ $section->id }})" title="edit" type="button"
-                                            data-toggle="modal" data-target="#edit-section"
+                                        <button wire:click="edit({{ $product->id }})" title="edit" type="button"
+                                            data-toggle="modal" data-target="#edit-product"
                                             class="btn btn-primary btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </button>
 
-                                        <button wire:click="targetSectionId({{ $section->id }})" title="delete"
+                                        <button wire:click="targetProductId({{ $product->id }})" title="delete"
                                             type="button" data-toggle="modal" data-target="#deleteModal"
                                             class="btn btn-danger btn-sm">
                                             <i class="fa fa-trash"></i>
@@ -74,9 +76,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center">
-                                        there is no section yet
-                                    </td>
+                                    <td colspan="7"></td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -87,6 +87,6 @@
             <!-- /.card -->
         </div>
     </div>
-    {{ $this->allSections->links() }}
+    {{ $this->products->links() }}
 
 </div>

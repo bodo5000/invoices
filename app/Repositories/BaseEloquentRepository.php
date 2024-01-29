@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class BaseEloquentRepository implements BaseRepository
 {
-    public function __construct(private Model $model)
+    public function __construct(protected Model $model)
     {
         $this->model = $model;
     }

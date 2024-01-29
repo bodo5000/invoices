@@ -5,6 +5,7 @@ use App\Livewire\Auth\Register;
 use App\Livewire\Dashboard\Dashboard;
 use App\Livewire\Invoices\InvoicesList;
 use App\Livewire\Logout;
+use App\Livewire\Products\ProductsList;
 use App\Livewire\Sections\SectionsList;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', Dashboard::class)->name('dashboard');
     Route::get('/invoice-list', InvoicesList::class)->name('invoice-list');
     Route::get('/section-list', SectionsList::class)->name('section-list');
+    Route::get('/product-list', ProductsList::class)->name('product-list');
 });
 
 

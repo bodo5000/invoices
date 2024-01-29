@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Section extends Model
+class Product extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
         'description',
-        'created_by'
+        'created_by',
+        'section_id',
     ];
 
-    public function products()
+    public function section()
     {
-        return $this->hasMany(Product::class, 'section_id');
+        return $this->belongsTo(Section::class, 'section_id');
     }
 }
