@@ -26,7 +26,7 @@ class ProductsList extends Component
     public function edit($id)
     {
         $this->dispatch('getData', $id);
-        $this->dispatch('show', 'edit-section');
+        $this->dispatch('show', 'edit-product');
     }
 
 
