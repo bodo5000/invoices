@@ -28,7 +28,7 @@
         <li class="nav-item">
             <a href="pages/charts/uplot.html" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Partially paid invoices</p>
+                <p>archive</p>
             </a>
         </li>
     </ul>

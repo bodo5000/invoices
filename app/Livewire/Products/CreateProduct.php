@@ -27,9 +27,7 @@ class CreateProduct extends Component
 
     public function create(ProductRepository $productRepository)
     {
-
         $data = $this->validate();
-
         $product = $productRepository->getProductByName($this->name, $this->section_id);
 
         if ($product) {

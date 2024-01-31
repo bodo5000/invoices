@@ -3,11 +3,20 @@
         <x-conent-header title="invoice-list" main="Invoices" />
     </x-slot>
 
+    <x-alert name="success" />
+    <x-alert name="primary" />
+    <x-alert name="warning" />
+    <x-alert name="danger" />
+
+    <livewire:invoices.create-invoice />
+
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">All Invoices</h3>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#invoice-create">
+                        Add Invoice
+                    </button>
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">

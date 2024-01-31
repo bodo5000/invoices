@@ -19,4 +19,9 @@ class SectionEloquentRepository extends BaseEloquentRepository implements Sectio
 
         $this->update($model, $data);
     }
+
+    public function getProductBySection($sectionId)
+    {
+        return $this->model->find($sectionId)->products ?? [];
+    }
 }
