@@ -5,10 +5,7 @@ namespace App\Livewire\Invoices;
 use App\Repositories\Invoices\InvoiceRepository;
 use App\Repositories\Sections\SectionRepository;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\Reactive;
 use Livewire\Component;
-
-use function PHPSTORM_META\type;
 
 class CreateInvoice extends Component
 {
@@ -45,6 +42,10 @@ class CreateInvoice extends Component
 
     public function create(InvoiceRepository $invoiceRepository)
     {
+        if ($this->commission > ($this->amount_collection / 2)) {
+            return redirect(route('invoice-list'))->with('danger', 'commission must not bigger than half of amount_collection');
+        }
+
         $invoiceRepository->createInvoice($this->validate(), $this->value_vat, $this->total);
         return redirect(route('invoice-list'))->with('success', 'new invoice has been added');
     }

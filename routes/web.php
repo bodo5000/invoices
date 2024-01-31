@@ -4,6 +4,8 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Dashboard\Dashboard;
 use App\Livewire\Invoices\InvoicesList;
+use App\Livewire\Invoices\PaidInvoices;
+use App\Livewire\Invoices\UnpaidInvoices;
 use App\Livewire\Logout;
 use App\Livewire\Products\ProductsList;
 use App\Livewire\Sections\SectionsList;
@@ -26,6 +28,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/invoice-list', InvoicesList::class)->name('invoice-list');
     Route::get('/section-list', SectionsList::class)->name('section-list');
     Route::get('/product-list', ProductsList::class)->name('product-list');
+    Route::get('/unpaid_invoices', UnpaidInvoices::class)->name('unpaid-invoice');
+    Route::get('/paid-invoices', PaidInvoices::class)->name('paid-invoice');
 });
 
 

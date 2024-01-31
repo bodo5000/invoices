@@ -7,23 +7,20 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 #[Layout('layout.dashboard.index')]
-#[Title('invoice-list')]
-class InvoicesList extends Component
+#[Title('paid_invoice')]
+class PaidInvoices extends Component
 {
 
-    use WithPagination;
-
     #[Computed()]
-    public function invoices(InvoiceRepository $invoiceRepository)
+    public function paidInvoice(InvoiceRepository $invoiceRepository)
     {
-        return $invoiceRepository->getDesc_Paginating(5);
+        return $invoiceRepository->getPaidInvoices();
     }
 
     public function render()
     {
-        return view('livewire.invoices.invoices-list');
+        return view('livewire.invoices.paid-invoices');
     }
 }

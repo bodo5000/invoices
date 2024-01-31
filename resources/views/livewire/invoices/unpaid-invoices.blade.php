@@ -1,6 +1,6 @@
 <div>
     <x-slot name="conentHeader">
-        <x-conent-header title="invoice-list" main="Invoices" />
+        <x-conent-header title="unpaid-invoices" main="Invoices" />
     </x-slot>
 
     <x-alert name="success" />
@@ -8,15 +8,12 @@
     <x-alert name="warning" />
     <x-alert name="danger" />
 
-    <livewire:invoices.create-invoice />
+    @include('components.update-modal', ['itemName' => 'invoice'])
 
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#invoice-create">
-                        Add Invoice
-                    </button>
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -40,37 +37,36 @@
                                 <th>invoice_number</th>
                                 <th>section_name</th>
                                 <th>product</th>
-                                <th>value_vat</th>
                                 <th>total</th>
-                                <th>created_by</th>
-                                <th>updated_by</th>
                                 <th>status</th>
-                                <th>notes</th>
+                                <th>action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($this->invoices as $index => $invoice)
+                            @forelse ($this->unpaidInvoices as $index => $invoice)
                                 <tr wire:key="{{ $invoice->id }}">
                                     <td>{{ ++$index }}</td>
                                     <td>{{ $invoice->invoice_number }}</td>
                                     <td>{{ $invoice->section->name }}</td>
                                     <td>{{ $invoice->product_name }}</td>
-                                    <td>{{ (int) $invoice->value_vat }}</td>
                                     <td>
                                         <span class="badge bg-primary">
                                             {{ (int) $invoice->total }}
                                         </span>
                                     </td>
-                                    <td>{{ $invoice->created_by }}</td>
-                                    <td>{{ $invoice->updated_by ?? 'no one update it' }}</td>
                                     <td>
                                         <span
-                                            class="badge {{ $invoice->status == 'unpaid_invoice' ? 'bg-danger' : 'bg-success' }}">
-                                            {{ $invoice->status }}
+                                            class="badge {{ $invoice->status == 'unpaid_invoice' ? 'bg-danger' : 'bg-success' }}">{{ $invoice->status }}
                                         </span>
                                     </td>
 
-                                    <td>{{ $invoice->notes }}</td>
+                                    <td>
+                                        <button wire:click="targetInvoiceId({{ $invoice->id }})" title="delete"
+                                            type="button" data-toggle="modal" data-target="#updateModal"
+                                            class="btn btn-primary btn-sm">
+                                            cahange to paid
+                                        </button>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr class="text-center">
@@ -86,5 +82,5 @@
         </div>
     </div>
 
-    {{ $this->invoices->links() }}
+    {{ $this->unpaidInvoices->links() }}
 </div>

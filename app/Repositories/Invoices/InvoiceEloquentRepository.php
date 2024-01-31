@@ -13,4 +13,14 @@ class InvoiceEloquentRepository extends BaseEloquentRepository implements Invoic
         $data['total'] = $total;
         $this->create($data);
     }
+
+    public function getUnpaidInvoices()
+    {
+        return $this->model->where('status', 'unpaid_invoice')->paginate(5);
+    }
+
+    public function getPaidInvoices()
+    {
+        return $this->model->where('status', 'paid_invoice')->paginate(5);
+    }
 }
