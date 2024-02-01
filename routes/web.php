@@ -9,6 +9,7 @@ use App\Livewire\Invoices\PaidInvoices;
 use App\Livewire\Invoices\UnpaidInvoices;
 use App\Livewire\Logout;
 use App\Livewire\Products\ProductsList;
+use App\Livewire\Reports\Client\ClientsData;
 use App\Livewire\Reports\Invoice\InvoicesData;
 use App\Livewire\Sections\SectionsList;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/paid-invoices', PaidInvoices::class)->name('paid-invoice');
     Route::get('/invoices-reports', InvoicesData::class)->name('invoices-reports');
     Route::get('/archived-invoices', Archive::class)->name('archived-invoices');
+    Route::get('clients-report', ClientsData::class)->name('client-report');
 });
 
 

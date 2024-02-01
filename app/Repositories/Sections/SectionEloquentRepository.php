@@ -24,4 +24,9 @@ class SectionEloquentRepository extends BaseEloquentRepository implements Sectio
     {
         return $this->model->find($sectionId)->products ?? [];
     }
+
+    public function getInvoicesBySection($sectionId)
+    {
+        return $this->model->find($sectionId)->invoices ?? [];
+    }
 }
