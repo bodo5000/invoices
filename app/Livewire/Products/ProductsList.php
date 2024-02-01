@@ -4,12 +4,11 @@ namespace App\Livewire\Products;
 
 use App\Repositories\Products\ProductRepository;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-#[Layout('layout.dashboard.index')]
+
 #[Title('products-list')]
 class ProductsList extends Component
 {

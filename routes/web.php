@@ -12,6 +12,7 @@ use App\Livewire\Products\ProductsList;
 use App\Livewire\Reports\Client\ClientsData;
 use App\Livewire\Reports\Invoice\InvoicesData;
 use App\Livewire\Sections\SectionsList;
+use App\Livewire\Users\UsersList;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,17 +30,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
     Route::get('/', Dashboard::class)->name('dashboard');
     Route::get('/invoice-list', InvoicesList::class)->name('invoice-list');
+    Route::get('/paid-invoices', PaidInvoices::class)->middleware('role:admin')->name('paid-invoice');
+    Route::get('/unpaid_invoices', UnpaidInvoices::class)->name('unpaid-invoice');
+    Route::get('/archived-invoices', Archive::class)->middleware('role:admin')->name('archived-invoices');
     Route::get('/section-list', SectionsList::class)->name('section-list');
     Route::get('/product-list', ProductsList::class)->name('product-list');
-    Route::get('/unpaid_invoices', UnpaidInvoices::class)->name('unpaid-invoice');
-    Route::get('/paid-invoices', PaidInvoices::class)->name('paid-invoice');
-    Route::get('/invoices-reports', InvoicesData::class)->name('invoices-reports');
-    Route::get('/archived-invoices', Archive::class)->name('archived-invoices');
+    Route::get('/invoices-reports', InvoicesData::class)->middleware('role:admin')->name('invoices-reports');
     Route::get('clients-report', ClientsData::class)->name('client-report');
+    Route::get('users-list', UsersList::class)->middleware('role:admin')->name('users-list');
 });
 
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/register', Register::class)->name('register');
     Route::get('/login', Login::class)->name('login');
 });

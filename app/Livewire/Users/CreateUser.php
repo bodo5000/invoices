@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Livewire\Auth;
+namespace App\Livewire\Users;
 
 use App\Repositories\Auth\AuthRepository;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
+use Spatie\Permission\Models\Role;
 
-#[Layout('layout.auth.index')]
-#[Title('register')]
-class Register extends Component
+class CreateUser extends Component
 {
     use WithFileUploads;
 
@@ -19,6 +17,13 @@ class Register extends Component
     public $password;
     public $password_confirmation;
     public $image;
+    public $role;
+
+    #[Computed()]
+    public function allRoles()
+    {
+        return Role::all();
+    }
 
     public function register(AuthRepository $authRepository)
     {
@@ -28,8 +33,8 @@ class Register extends Component
             $formData['image'] = $this->image->store('usersLogo', 'public');
         }
 
-        $authRepository->create($formData);
-        return redirect(route('login'))->with('success', 'user has been created try to login now!');
+        $authRepository->create($formData)->assignRole($this->role);
+        return redirect(route('users-list'))->with('success', 'user has been created ');
     }
 
     public function rules()
@@ -39,12 +44,14 @@ class Register extends Component
             'email' => ['required', 'unique:users,email'],
             'password' => 'required',
             'password_confirmation' => 'required_with:password|same:password|min:6',
+            'role' => 'required',
             'image' => 'nullable|image|sometimes|max:1024'
         ];
     }
 
+
     public function render()
     {
-        return view('livewire.auth.register');
+        return view('livewire.users.create-user');
     }
 }

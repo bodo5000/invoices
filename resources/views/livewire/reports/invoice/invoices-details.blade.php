@@ -80,7 +80,7 @@
                                             </tr>
                                             <tr>
                                                 <th>discount:</th>
-                                                <td>${{ $invoice->discount ?? '' }}</td>
+                                                <td>${{ $invoice->discount ?? 'no discount' }}</td>
                                             </tr>
                                             <tr>
                                                 <th>rate_vat({{ $invoice->rate_vat ?? '' }}%) / value_vat:</th>

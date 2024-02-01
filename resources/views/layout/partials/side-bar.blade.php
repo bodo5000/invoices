@@ -33,9 +33,10 @@
                 <li class="nav-header">Reports</li>
                 <x-reports-link />
 
-                <li class="nav-header">Users</li>
-                <x-users-link />
-
+                @role('admin')
+                    <li class="nav-header">Users</li>
+                    <x-users-link />
+                @endrole
                 <li class="nav-header">Settings</li>
                 <x-settings-link />
             </ul>

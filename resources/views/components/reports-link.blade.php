@@ -7,12 +7,14 @@
         </p>
     </a>
     <ul class="nav nav-treeview" style="display: none;">
-        <li class="nav-item">
-            <a href="{{ route('invoices-reports') }}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>invoices reports</p>
-            </a>
-        </li>
+        @role('admin')
+            <li class="nav-item">
+                <a href="{{ route('invoices-reports') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>invoices reports</p>
+                </a>
+            </li>
+        @endrole
         <li class="nav-item">
             <a href="{{ route('client-report') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>

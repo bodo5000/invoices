@@ -4,12 +4,11 @@ namespace App\Livewire\Invoices;
 
 use App\Repositories\Invoices\InvoiceRepository;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-#[Layout('layout.dashboard.index')]
+
 #[Title('invoice-list')]
 class InvoicesList extends Component
 {
