@@ -25,7 +25,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->decimal('amount_collection', 8, 2);
             $table->decimal('commission', 8, 2);
-            $table->decimal('discount', 8, 2);
+            $table->decimal('discount', 8, 2)->nullable()->default(0.0);
             $table->string('rate_vat');
             $table->decimal('value_vat', 8, 2);
             $table->decimal('total', 8, 2);

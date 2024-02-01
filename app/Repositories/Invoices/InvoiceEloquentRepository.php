@@ -23,4 +23,19 @@ class InvoiceEloquentRepository extends BaseEloquentRepository implements Invoic
     {
         return $this->model->where('status', 'paid_invoice')->paginate(5);
     }
+
+    public function getInvoiceByArchive()
+    {
+        return $this->model->onlyTrashed()->paginate(5);
+    }
+
+    public function restoreInvoice($id)
+    {
+        return $this->model->onlyTrashed()->where('id', $id)->restore();
+    }
+
+    public function deleteInvoice($id)
+    {
+        return $this->model->onlyTrashed()->where('id', $id)->forceDelete();
+    }
 }

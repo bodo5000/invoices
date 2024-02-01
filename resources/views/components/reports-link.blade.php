@@ -8,7 +8,7 @@
     </a>
     <ul class="nav nav-treeview" style="display: none;">
         <li class="nav-item">
-            <a href="pages/charts/chartjs.html" class="nav-link">
+            <a href="{{ route('invoices-reports') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>invoices reports</p>
             </a>

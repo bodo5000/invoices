@@ -26,7 +26,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="pages/charts/uplot.html" class="nav-link">
+            <a href="{{ route('archived-invoices') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>archive</p>
             </a>

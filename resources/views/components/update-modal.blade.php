@@ -1,4 +1,4 @@
-@props(['itemName'])
+@props(['itemName', 'title'])
 
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
     wire:ignore.self>
@@ -15,7 +15,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" wire:click='update' class="btn btn-primary">Yes, update</button>
+                <button type="button" wire:click='update' class="btn btn-primary">Yes,
+                    {{ $title ?? 'update' }}</button>
             </div>
         </div>
     </div>
