@@ -11,7 +11,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form wire:submit='create'>
+                        <form>
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
 
@@ -151,12 +151,6 @@
                                     @enderror
                                 </div>
 
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-success">
-                                        create Invoice
-                                    </button>
-                                </div>
                             </div>
                             <!-- /.card-body -->
 
@@ -164,7 +158,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    {{-- <button wire:click.prevent="create" type="submit" class="btn btn-success">Save changes</button> --}}
+                    <div class="text-center">
+                        <button wire:click.prevent="create" type="submit" class="btn btn-success">
+                            create Invoice
+                        </button>
+                    </div>
                     <a href="{{ route('invoice-list') }}" class="btn btn-secondary">Close</a>
                 </div>
             </div>

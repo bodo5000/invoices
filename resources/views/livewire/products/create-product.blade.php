@@ -12,7 +12,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form wire:submit='create'>
+                        <form>
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">product name</label>
@@ -44,9 +44,7 @@
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-success">
-                                    create product
-                                </button>
+
 
                             </div>
                             <!-- /.card-body -->
@@ -55,7 +53,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    {{-- <button wire:click.prevent="create" type="submit" class="btn btn-success">Save changes</button> --}}
+                    <button wire:click.prevent='create' type="submit" class="btn btn-success">
+                        create product
+                    </button>
                     <button wire:click='resetModal' type="button" class="btn btn-secondary"
                         data-dismiss="modal">Close</button>
                 </div>

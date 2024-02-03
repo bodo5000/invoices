@@ -12,7 +12,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form wire:submit="register" method="post" enctype="multipart/form-data">
+                        <form method="post" enctype="multipart/form-data">
 
                             <div class="card-body">
                                 <div class="input-group mb-3">
@@ -105,16 +105,18 @@
 
 
                             <!-- /.col -->
-                            <div class="col-4 mb-3 ml-2">
-                                <button type="submit" class="btn btn-success btn-block">create User</button>
-                            </div>
+
                             <!-- /.col -->
 
                         </form>
                     </div>
                 </div>
+
                 <div class="modal-footer">
-                    {{-- <button wire:click.prevent="create" type="submit" class="btn btn-success">Save changes</button> --}}
+                    <div class="col-4 ml-2">
+                        <button wire:click.prevent='register' type="submit" class="btn btn-success btn-block">create
+                            User</button>
+                    </div>
                     <a href="{{ route('users-list') }}" class="btn btn-secondary">Close</a>
                 </div>
             </div>

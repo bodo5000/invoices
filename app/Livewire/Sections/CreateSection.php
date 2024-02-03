@@ -11,14 +11,17 @@ class CreateSection extends Component
     public $description;
     public $created_by;
 
-
     public function create(SectionRepository $sectionRepository)
     {
         $data = $this->validate();
-        $sectionRepository->createSection($data);
-        $this->reset('name', 'description');
+        if (preg_match('/\w+[_]\w+/', $this->name)) {
+            $sectionRepository->createSection($data);
+            $this->reset('name', 'description');
 
-        return redirect(route('section-list'))->with('success', 'new section has been added');
+            return redirect(route('section-list'))->with('success', 'new section has been added');
+        }
+
+        return redirect(route('section-list'))->with('danger', 'section name must like: word_word');
     }
 
     public function resetModal()

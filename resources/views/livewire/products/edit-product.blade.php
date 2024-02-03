@@ -12,7 +12,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form wire:submit="update">
+                        <form>
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">product name</label>
@@ -29,10 +29,6 @@
                                     <textarea wire:model="description" class="form-control" id="exampleInputPassword1" placeholder="enter description"></textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">
-                                    save changes
-                                </button>
-
                             </div>
                             <!-- /.card-body -->
 
@@ -40,7 +36,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    {{-- <button wire:click.prevent="create" type="submit" class="btn btn-primary">Save changes</button> --}}
+                    <button wire:click.prevent='update' type="submit" class="btn btn-primary">
+                        save changes
+                    </button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
